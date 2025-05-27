@@ -1,4 +1,4 @@
-# Sistema de Reservas de Salas
+# Sistema de Reservas de Salas :green_book:
 
 Este serviço RESTful é responsável por gerenciar o agendamento e controle de reservas de salas. Ele garante a disponibilidade das salas, prevenindo conflitos de horário e validando as entidades envolvidas (turmas e professores) através da integração com o microserviço de **Sistema de Gerenciamento Escolar**.
 
