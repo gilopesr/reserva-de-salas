@@ -5,6 +5,7 @@ Este serviço RESTful é responsável por gerenciar o agendamento e controle de 
 Esta API depende da **API de Gerenciamento Escolar (School System)**, que deve estar em execução e exposta localmente. A comunicação entre os serviços ocorre via requisições HTTP REST, para validar:
 - Verifica se a **turma** existe via `GET /turmas/{id}`
 - Verifica se o **professor** existe via `GET /professores/{id}`
+- *Se a API-SchoolSystem estiver indisponível ou os dados não forem encontrados, a API retorna erro 400 Bad Request*
 
 
 ## 🔧 Tecnologias Utilizadas
@@ -45,13 +46,6 @@ Este serviço opera como parte de um ecossistema de microserviços, interagindo 
 * **API-SchoolSystem:** Responsável por dados de turmas e professores.
 
 * **Serviço de Reservas:** Gerencia unicamente a lógica de agendamento de salas.
-
-### Validação de Entidades
-Durante criação ou atualização de reservas, o serviço consulta a API-SchoolSystem via HTTP GET para verificar a existência de **turma_id** e **id_professor**.
-O nome do professor é consultado e armazenado junto à reserva para facilitar futuras buscas.
-
-### Tratamento de Erros
-Se a API-SchoolSystem estiver indisponível ou os dados não forem encontrados, a API retorna erro 400 Bad Request
 
 
 ## Endpoints da API (Rotas)
