@@ -2,12 +2,12 @@
 
 ## Descrição da API
 
-Este serviço RESTful é responsável por gerenciar o agendamento e controle de reservas de salas. Ele garante a disponibilidade das salas, prevenindo conflitos de horário e validando as entidades envolvidas (turmas e professores) através da integração com outros microsserviços do ecossistema.
+Este serviço RESTful é responsável por gerenciar o agendamento e controle de reservas de salas. Ele garante a disponibilidade das salas, prevenindo conflitos de horário e validando as entidades envolvidas (turmas e professores) através da integração com o microserviço de **Sistema de Gerenciamento Escolar**.
 
 ### Funcionalidades Principais:
 
 * **Criação de Reservas:** Permite agendar uma sala para uma turma e professor específicos em uma data e período determinados.
-* **Consulta de Reservas:** Oferece endpoints para listar todas as reservas ou buscar uma reserva por seu identificador único.
+* **Consulta de Reservas:** Possui endpoints para listar todas as reservas ou buscar uma reserva por seu identificador único.
 * **Atualização de Reservas:** Possibilita modificar os detalhes de uma reserva existente.
 * **Exclusão de Reservas:** Permite remover agendamentos de salas.
 
