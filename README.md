@@ -1,6 +1,7 @@
 # Sistema de Reservas de Salas
 
 Este serviço RESTful é responsável por gerenciar o agendamento e controle de reservas de salas. Ele garante a disponibilidade das salas, prevenindo conflitos de horário e validando as entidades envolvidas (turmas e professores) através da integração com o microserviço de **Sistema de Gerenciamento Escolar**.
+
 Esta API depende da **API de Gerenciamento Escolar (School System)**, que deve estar em execução e exposta localmente. A comunicação entre os serviços ocorre via requisições HTTP REST, para validar:
 - Verifica se a **turma** existe via `GET /turmas/{id}`
 - Verifica se o **professor** existe via `GET /professores/{id}`
