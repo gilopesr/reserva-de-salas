@@ -4,28 +4,50 @@
 
 Este serviço RESTful é responsável por gerenciar o agendamento e controle de reservas de salas. Ele garante a disponibilidade das salas, prevenindo conflitos de horário e validando as entidades envolvidas (turmas e professores) através da integração com o microserviço de **Sistema de Gerenciamento Escolar**.
 
+## 🔧 Tecnologias Utilizadas
+* Python 3.11
+* FastAPI
+* SQLAlchemy
+* Docker & Docker Compose
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+
+- [Docker](https://www.docker.com/) instalado
+
+### Passo a Passo
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/gilopesr/reserva-de-salas.git
+   cd reserva
+
+2. Inicie os containers:
+   ```bash
+   docker-compose up --build
+
+   
 ### Funcionalidades Principais:
 
-* **Criação de Reservas:** Permite agendar uma sala para uma turma e professor específicos em uma data e período determinados.
-* **Consulta de Reservas:** Possui endpoints para listar todas as reservas ou buscar uma reserva por seu identificador único.
+* **Criação de Reservas:** Agendamento de salas para turmas e professores específicos, em data e horário definidos.
+* **Consulta de Reservas:** listagem de todas as reservas ou buscar uma reserva por seu id.
 * **Atualização de Reservas:** Possibilita modificar os detalhes de uma reserva existente.
-* **Exclusão de Reservas:** Permite remover agendamentos de salas.
+* **Exclusão de Reservas:** Permite remover reservas de salas.
 
-## Descrição do Ecossistema de Microsserviços
+## 🧩 Integração com Microserviços
+Este serviço opera como parte de um ecossistema de microserviços, interagindo com a API-SchoolSystem:
 
-Este serviço opera como um componente especializado dentro de um ecossistema, colaborando com a **API-SchoolSystem** para gerenciar reservas de salas.
+* **API-SchoolSystem:** Responsável por dados de turmas e professores.
 
-* **API-SchoolSystem (`https://github.com/brunaferreir/API-SchoolSystem`):** É a fonte autoritária para dados de entidades core como **turmas** e **professores**.
-* **Serviço de Reservas de Salas (Este Serviço):** Foca exclusivamente na lógica de agendamento e disponibilidade de salas. Ele **não armazena** informações completas de turmas ou professores, apenas seus IDs e, no caso do professor, seu nome (que é obtido da `API-SchoolSystem` no momento da criação/atualização da reserva).
+* **Serviço de Reservas:** Gerencia unicamente a lógica de agendamento de salas.
 
-### Como este serviço se integra com a API-SchoolSystem:
+### Validação de Entidades
+Durante criação ou atualização de reservas, o serviço consulta a API-SchoolSystem via HTTP GET para verificar a existência de turma_id e id_professor.
+O nome do professor é consultado e armazenado junto à reserva para facilitar futuras buscas.
 
-1.  **Validação de Entidades:**
-    * Quando uma reserva é criada ou atualizada, o Serviço de Reservas faz chamadas HTTP `GET` para a `API-SchoolSystem` (por exemplo, para `/api/turmas/{id}` e `/api/professores/{id}`) para verificar se o `turma_id` e o `id_professor` fornecidos são válidos e existem na base de dados da `API-SchoolSystem`.
-    * O nome do professor é obtido da `API-SchoolSystem` e armazenado localmente na reserva para facilitar a consulta futura da reserva sem depender de uma nova chamada à API externa para o nome.
-2.  **Acoplamento:**
-    * Este serviço tem um acoplamento **fraco** em tempo de execução com a `API-SchoolSystem`. Ele depende da disponibilidade e do contrato da API externa para suas validações.
-    * Em caso de indisponibilidade da `API-SchoolSystem` ou de validação falha (turma/professor não encontrados), o Serviço de Reservas retorna um erro `400 Bad Request`, indicando que a entidade referenciada não pôde ser validada.
+### Tratamento de Erros
+Se a API-SchoolSystem estiver indisponível ou os dados não forem encontrados, a API retorna erro 400 Bad Request
 
 
 ## Endpoints da API (Rotas)
