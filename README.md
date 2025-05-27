@@ -1,8 +1,10 @@
 # Sistema de Reservas de Salas
 
-## Descrição da API
-
 Este serviço RESTful é responsável por gerenciar o agendamento e controle de reservas de salas. Ele garante a disponibilidade das salas, prevenindo conflitos de horário e validando as entidades envolvidas (turmas e professores) através da integração com o microserviço de **Sistema de Gerenciamento Escolar**.
+Esta API depende da **API de Gerenciamento Escolar (School System)**, que deve estar em execução e exposta localmente. A comunicação entre os serviços ocorre via requisições HTTP REST, para validar:
+- Verifica se a **turma** existe via `GET /turmas/{id}`
+- Verifica se o **professor** existe via `GET /professores/{id}`
+
 
 ## 🔧 Tecnologias Utilizadas
 * Python 3.11
@@ -14,19 +16,21 @@ Este serviço RESTful é responsável por gerenciar o agendamento e controle de 
 
 ### Pré-requisitos
 
-- [Docker](https://www.docker.com/) instalado
+* [Docker](https://www.docker.com/) instalado
+* Python 3.x
+* pip (gerenciador de pacotes do Python)
+* Um banco de dados compatível com SQLAlchemy (SQLite, MySQL, PostgreSQL, etc.)
 
 ### Passo a Passo
 
 1. Clone o repositório:
    ```bash
    git clone https://github.com/gilopesr/reserva-de-salas.git
-   cd reserva
+   cd Reserva
 
 2. Inicie os containers:
    ```bash
    docker-compose up --build
-
    
 ### Funcionalidades Principais:
 
