@@ -20,7 +20,6 @@ Esta API depende da **API de Gerenciamento Escolar (School System)**, que deve e
 * [Docker](https://www.docker.com/) instalado
 * Python 3.x
 * pip (gerenciador de pacotes do Python)
-* Um banco de dados compatível com SQLAlchemy (SQLite, MySQL, PostgreSQL, etc.)
 
 ### Passo a Passo
 
@@ -48,7 +47,7 @@ Este serviço opera como parte de um ecossistema de microserviços, interagindo 
 * **Serviço de Reservas:** Gerencia unicamente a lógica de agendamento de salas.
 
 ### Validação de Entidades
-Durante criação ou atualização de reservas, o serviço consulta a API-SchoolSystem via HTTP GET para verificar a existência de turma_id e id_professor.
+Durante criação ou atualização de reservas, o serviço consulta a API-SchoolSystem via HTTP GET para verificar a existência de **turma_id** e **id_professor**.
 O nome do professor é consultado e armazenado junto à reserva para facilitar futuras buscas.
 
 ### Tratamento de Erros
