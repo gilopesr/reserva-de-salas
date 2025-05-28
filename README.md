@@ -32,6 +32,11 @@ Esta API depende da **API de Gerenciamento Escolar (School System)**, que deve e
 2. Inicie os containers:
    ```bash
    docker-compose up --build
+
+
+## Acesse a documentação:
+
+    * A API estará disponível em `http://localhost:5000/reservas` (ou na porta e host configurados).
    
 ### Funcionalidades Principais:
 
@@ -158,4 +163,6 @@ Deleta uma reserva existente pelo seu ID.
     * `200 OK`: Reserva deletada com sucesso.
     * `404 Not Found`: Reserva não encontrada.
 
----
+## Licença
+
+[MIT License](https://opensource.org/licenses/MIT)
