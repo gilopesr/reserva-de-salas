@@ -47,6 +47,28 @@ Este serviço opera como parte de um ecossistema de microserviços, interagindo 
 
 * **Serviço de Reservas:** Gerencia unicamente a lógica de agendamento de salas.
 
+## Estrutura do Projeto
+
+A estrutura do projeto é a seguinte:  📂
+
+    ```
+    ├── Reserva/
+    |   ├── controllers/
+    |   │   ├── __init__.py
+    |   │   └── reserva_route.py
+    |   ├── models/
+    |   │   ├── __init__.py
+    |   │   └── reserva_model.py
+    |   ├── config.py
+    |   ├── app.py   
+    |   ├── database.py  
+    |   ├── dockerfile
+    |   ├── requirements.txt
+    |   └── docker-compose.yml
+    ├── LICENCE
+    └── README.md
+    ```
+
 
 ## Endpoints da API (Rotas)
 
